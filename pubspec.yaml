@@ -34,6 +34,7 @@ dependencies:
   firebase_core: ^3.13.0
   flutter:
     sdk: flutter
+  flutter_svg: ^2.1.0
   provider: ^6.1.4
 
 dev_dependencies:
@@ -51,9 +52,18 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/icons/User_02.svg
+    - assets/icons/Add_Plus_Circle.svg
+    - assets/icons/Circle_Check2.svg
+    - assets/icons/Circle_Check.svg
+    - assets/icons/fire.svg
+    - assets/icons/Flag-add.svg
+    - assets/icons/Flag.svg
+    - assets/icons/House_02.svg
+    - assets/icons/Radio_Fill.svg
+    - assets/images/Reading.png
+    - assets/images/Createbutton.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
