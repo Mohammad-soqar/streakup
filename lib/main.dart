@@ -1,21 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:streakup/ui/themes/theme.dart';
+import 'package:streakup/ui/views/home_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(); // Ensure Firebase is initialized
   runApp(
-    MultiProvider(
+    /*  MultiProvider(
       providers: [
         /* ChangeNotifierProvider(
             create: (_) => AuthViewModel()), */
         // Add your providers here
       ],
       child: const MyApp(),
-    ),
+    ), */
+    const MyApp(),
   );
 }
 
@@ -48,9 +49,9 @@ class AuthWrapper extends StatelessWidget {
               body: Center(child: CircularProgressIndicator()));
         } else {
           if (snapshot.hasData) {
-            return Container(); // Show Home Screen
+            return HomeView(); // Show Home Screen
           }
-          return Container(); // Show Splash Screen
+          return HomeView(); // Show Splash Screen
         }
       },
     );
