@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:streakup/data/models/enums/challengestatus_e.dart';
 
 class Challenge {
@@ -8,7 +10,8 @@ class Challenge {
   final bool isPublic;
   final String category;
   final int maxParticipants;
-  final String? coverImage;
+  final Uint8List coverImage;
+  final String coverImageUrl;
   final String? emoji;
   final ChallengeStatus status;
   final List<String> rules;
@@ -26,7 +29,8 @@ class Challenge {
     required this.isPublic,
     required this.category,
     required this.maxParticipants,
-    this.coverImage,
+    required this.coverImage,
+    required this.coverImageUrl,
     this.emoji,
     required this.status,
     this.rules = const [],
@@ -47,6 +51,7 @@ class Challenge {
       category: json['category'],
       maxParticipants: json['maxParticipants'],
       coverImage: json['coverImage'],
+      coverImageUrl: json['coverImageUrl'],
       emoji: json['emoji'],
       status: ChallengeStatus.fromString(json['status']),
       rules: List<String>.from(json['rules'] ?? []),
@@ -68,6 +73,7 @@ class Challenge {
       'category': category,
       'maxParticipants': maxParticipants,
       'coverImage': coverImage,
+      'coverImageUrl': coverImageUrl,
       'emoji': emoji,
       'status': status.toShortString(),
       'rules': rules,
