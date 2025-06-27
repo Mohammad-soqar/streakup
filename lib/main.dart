@@ -1,22 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:streakup/ui/themes/theme.dart';
 import 'package:streakup/ui/views/home_view.dart';
+import 'package:streakup/viewmodels/user_viewmodel.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Ensure Firebase is initialized
+  await Firebase.initializeApp();
   runApp(
-    /*  MultiProvider(
+      MultiProvider(
       providers: [
-        /* ChangeNotifierProvider(
-            create: (_) => AuthViewModel()), */
-        // Add your providers here
+        ChangeNotifierProvider(
+            create: (_) => UserViewModel()), 
       ],
       child: const MyApp(),
-    ), */
-    const MyApp(),
+    ), 
+
   );
 }
 
