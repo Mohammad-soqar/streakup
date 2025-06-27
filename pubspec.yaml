@@ -36,6 +36,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.1.0
+  fluttertest: ^0.0.1
+  intl: ^0.20.2
+  intl_phone_field: ^3.2.0
+  mockito: ^5.4.5
   provider: ^6.1.4
 
 dev_dependencies:
@@ -54,6 +58,18 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    #logo:
+    - assets/logo/Logo_icon.png
+    #light
+    - assets/logo/Logo_hoz_light.png
+    - assets/logo/Logo_ver_light.png
+    - assets/logo/Logo_txt_light.png
+    #dark
+    - assets/logo/Logo_hoz_dark.png
+    - assets/logo/Logo_ver_dark.png
+    - assets/logo/Logo_txt_dark.png
+
+    #icons:
     - assets/icons/User_02.svg
     - assets/icons/Add_Plus_Circle.svg
     - assets/icons/Circle_Check2.svg

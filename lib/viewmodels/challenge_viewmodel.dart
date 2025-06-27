@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:streakup/data/models/challenge.dart';
 import 'package:streakup/data/models/enums/challengestatus_e.dart';
 import 'package:streakup/data/repositories/challenge_repo.dart';
 
-class ChallengeViewmodel extends ChangeNotifier{
+class ChallengeViewmodel extends ChangeNotifier {
   // Repository
   final ChallengeRepo _challengeRepo = ChallengeRepo();
   // Text Controllers
@@ -25,7 +24,7 @@ class ChallengeViewmodel extends ChangeNotifier{
   Uint8List? coverImageBytes;
   String coverImageUrl = '';
 
-  Future<void> createChallenge() async {
+  Future<void> createChallenge(challenge) async {
     // Validate inputs
     if (titleController.text.isEmpty) {
       throw Exception('Title cannot be empty');
@@ -43,10 +42,7 @@ class ChallengeViewmodel extends ChangeNotifier{
       throw Exception('Cover Image cannot be empty');
     }
 
-    
-
     // Call repository to create challenge
     await _challengeRepo.createChallenge(challenge);
   }
-
 }
