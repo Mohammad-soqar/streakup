@@ -1,6 +1,6 @@
-class User {
+class Challenger {
   final String id;
-  final String name;
+  final String fullName;
   final String email;
   final String? profilePhoto;
   final String gender;
@@ -17,15 +17,16 @@ class User {
   int get age {
     final now = DateTime.now();
     int age = now.year - dateOfBirth.year;
-    if (now.month < dateOfBirth.month || (now.month == dateOfBirth.month && now.day < dateOfBirth.day)) {
+    if (now.month < dateOfBirth.month ||
+        (now.month == dateOfBirth.month && now.day < dateOfBirth.day)) {
       age--;
     }
     return age;
   }
 
-  User({
+  Challenger({
     required this.id,
-    required this.name,
+    required this.fullName,
     required this.email,
     this.profilePhoto,
     required this.gender,
@@ -39,10 +40,10 @@ class User {
     this.lastUpdated,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
+  factory Challenger.fromJson(Map<String, dynamic> json) {
+    return Challenger(
       id: json['id'],
-      name: json['name'],
+      fullName: json['fullName'],
       email: json['email'],
       profilePhoto: json['profilePhoto'],
       gender: json['gender'],
@@ -52,15 +53,19 @@ class User {
       outgoingRequests: List<String>.from(json['outgoingRequests'] ?? []),
       userType: json['userType'],
       verified: json['verified'],
-      createdDate: json['createdDate'] != null ? DateTime.parse(json['createdDate']) : null,
-      lastUpdated: json['lastUpdated'] != null ? DateTime.parse(json['lastUpdated']) : null,
+      createdDate: json['createdDate'] != null
+          ? DateTime.parse(json['createdDate'])
+          : null,
+      lastUpdated: json['lastUpdated'] != null
+          ? DateTime.parse(json['lastUpdated'])
+          : null,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'name': name,
+      'fullName': fullName,
       'email': email,
       'profilePhoto': profilePhoto,
       'gender': gender,
