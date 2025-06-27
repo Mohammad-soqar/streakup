@@ -30,7 +30,8 @@ class ChallengeService {
         'isPublic': challenge.isPublic,
         'category': challenge.category,
         'maxParticipants': challenge.maxParticipants,
-        'coverImage': coverImageUrl,
+        // Store the URL for the uploaded cover image
+        'coverImageUrl': coverImageUrl,
         'emoji': challenge.emoji,
         'status': challenge.status.toString(),
         'rules': challenge.rules,
