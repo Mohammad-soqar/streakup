@@ -61,7 +61,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
               filled: true,
-              fillColor: Theme.of(context).colorScheme.surfaceVariant,
+              fillColor: Theme.of(context).colorScheme.onInverseSurface,
               border: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(10),
@@ -81,7 +81,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     )
                   : null,
             ),
-            
           ),
         ],
       ),

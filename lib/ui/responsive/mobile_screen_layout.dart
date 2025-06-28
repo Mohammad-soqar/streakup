@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:streakup/utils/global_variables.dart';
 
-
 class MobileScreenLayout extends StatefulWidget {
   const MobileScreenLayout({super.key});
 
