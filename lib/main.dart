@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:streakup/ui/themes/theme.dart';
+import 'package:streakup/ui/views/auth/login_view.dart';
 import 'package:streakup/ui/views/home_view.dart';
 import 'package:streakup/viewmodels/user_viewmodel.dart';
 
@@ -10,21 +11,17 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-      MultiProvider(
+    MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-            create: (_) => UserViewModel()), 
+        ChangeNotifierProvider(create: (_) => UserViewModel()),
       ],
       child: const MyApp(),
-    ), 
-
+    ),
   );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,7 +49,7 @@ class AuthWrapper extends StatelessWidget {
           if (snapshot.hasData) {
             return HomeView(); // Show Home Screen
           }
-          return HomeView(); // Show Splash Screen
+          return LoginView(); // Show Splash Screen
         }
       },
     );
