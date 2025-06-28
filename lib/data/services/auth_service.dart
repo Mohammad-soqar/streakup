@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:streakup/data/models/challenger.dart';
-import 'package:streakup/viewmodels/user_viewmodel.dart';
 
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final UserViewModel _userViewModel = UserViewModel();
 
   Future<String> loginWithEmailAndPassword({
     required String email,
@@ -19,7 +17,7 @@ class AuthService {
           email: email,
           password: password,
         );
-        res = 'Login successful';
+        res = 'success';
       } else {
         res = "Please enter all the fields";
       }
@@ -31,11 +29,10 @@ class AuthService {
 
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
-    _userViewModel.clearUser();
   }
 
   Future<Challenger> loadUser(String uid) async {
-    final doc = await _firestore.collection('users').doc(uid).get();
+    final doc = await _firestore.collection('challengers').doc(uid).get();
     if (doc.exists) {
       return Challenger.fromJson(doc.data()!);
     } else {
@@ -43,14 +40,15 @@ class AuthService {
     }
   }
 
-  Future<String> registerWithEmailAndPassword({
-    required String fullName,
-    required String email,
-    required String password,
-    String? profilePhoto,
-    required String gender,
-    required DateTime dateOfBirth
-  }) async {
+  Future<String> registerWithEmailAndPassword(
+      {required String fullName,
+      required String firstName,
+      required String lastName,
+      required String email,
+      required String password,
+      String? profilePhoto,
+      required String gender,
+      required DateTime dateOfBirth}) async {
     String res = "Some error occurred";
     try {
       if (fullName.isNotEmpty || email.isNotEmpty || password.isNotEmpty) {
@@ -62,6 +60,8 @@ class AuthService {
         Challenger challenger = Challenger(
           id: userCredential.user!.uid,
           fullName: fullName,
+          firstName: firstName,
+          lastName: lastName,
           email: email,
           profilePhoto: profilePhoto,
           gender: gender,
@@ -78,6 +78,7 @@ class AuthService {
             .collection('challengers')
             .doc(userCredential.user!.uid)
             .set(challenger.toJson());
+        res = 'success';
       }
     } catch (e) {
       res = e.toString();

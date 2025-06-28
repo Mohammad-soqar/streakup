@@ -46,15 +46,23 @@ class UserViewModel extends ChangeNotifier {
 
   Future<String> registerWithEmailAndPassword({
     required String fullName,
+    required String firstName,
+    required String lastName,
     required String email,
     required String password,
     String? profilePhoto,
     required String gender,
     required DateTime dateOfBirth,
   }) async {
-    final res = await _authService.loginWithEmailAndPassword(
+    final res = await _authService.registerWithEmailAndPassword(
+      fullName: fullName,
+      firstName: firstName,
+      lastName: lastName,
+      profilePhoto: profilePhoto,
       email: email,
       password: password,
+      gender: gender,
+      dateOfBirth: dateOfBirth,
     );
     if (res == 'success') {
       final user = _firebaseAuth.currentUser;

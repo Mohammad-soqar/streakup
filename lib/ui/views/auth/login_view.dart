@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:streakup/ui/responsive/mobile_screen_layout.dart';
 import 'package:streakup/ui/views/auth/register_view.dart';
@@ -48,6 +47,12 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        title: Text('Login'),
+        centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -60,34 +65,13 @@ class _LoginViewState extends State<LoginView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 /// Title
-                Text(
-                  'Login',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                Image.asset(
+                  'assets/logo/Logo_hoz_dark.png',
+                  height: 80,
                 ),
-                const SizedBox(height: 20),
 
                 /// Logo
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  height:
-                      keyboardOpen ? screenWidth * 0.25 : screenWidth * 0.45,
-                  width: keyboardOpen ? screenWidth * 0.25 : screenWidth * 0.45,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).colorScheme.onInverseSurface,
-                  ),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/logo/Logo.svg',
-                      width:
-                          keyboardOpen ? screenWidth * 0.2 : screenWidth * 0.35,
-                      colorFilter: ColorFilter.mode(
-                        Theme.of(context).colorScheme.primary,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                  ),
-                ),
+
                 const SizedBox(height: 30),
 
                 /// Form

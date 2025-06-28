@@ -1,6 +1,8 @@
 class Challenger {
   final String id;
   final String fullName;
+  final String firstName;
+  final String lastName;
   final String email;
   final String? profilePhoto;
   final String gender;
@@ -27,6 +29,8 @@ class Challenger {
   Challenger({
     required this.id,
     required this.fullName,
+    required this.firstName,
+    required this.lastName,
     required this.email,
     this.profilePhoto,
     required this.gender,
@@ -44,6 +48,8 @@ class Challenger {
     return Challenger(
       id: json['id'],
       fullName: json['fullName'],
+      firstName: json['firstName'] ?? '',
+      lastName: json['lastName'] ?? '',
       email: json['email'],
       profilePhoto: json['profilePhoto'],
       gender: json['gender'],
